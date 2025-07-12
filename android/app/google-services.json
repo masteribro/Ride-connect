@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "247996962876",
+    "project_id": "ride-connect-e4c91",
+    "storage_bucket": "ride-connect-e4c91.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247996962876:android:55938c53a62ef07412cb39",
+        "android_client_info": {
+          "package_name": "com.example.ride_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtkuQTZpPsQzdHeRP40-EumcS5GzY0Rh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
