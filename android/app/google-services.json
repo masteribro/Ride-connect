@@ -12,7 +12,12 @@
           "package_name": "com.example.ride_connect"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "247996962876-dabl98iugt4kt626r283j3m83v6o7rab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAtkuQTZpPsQzdHeRP40-EumcS5GzY0Rh8"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247996962876-dabl98iugt4kt626r283j3m83v6o7rab.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "247996962876-5udde2pp1ai8e6tq3jvi8use158c9fu1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rideConnect"
+              }
+            }
+          ]
         }
       }
     }
