@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
   Future<void> login(String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
