@@ -13,6 +13,8 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // ✅ Initialize your service locators
+  IoC();
   runApp(const MyApp());
 }
 

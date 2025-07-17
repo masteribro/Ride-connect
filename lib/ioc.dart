@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import 'application/auth/authentication_cubit.dart';
 import 'domain/auth/authentication_client.dart';
 import 'domain/auth/authentication_service.dart';
 
@@ -12,4 +13,13 @@ class IoC{
         authenticationClient: AuthenticationClient(),
       ),
     );}
+
+  IoC() {
+    initServices();
+    getIt.registerSingleton(
+      AuthenticationCubit(
+        getIt(),
+      ),
+    );
+  }
 }
