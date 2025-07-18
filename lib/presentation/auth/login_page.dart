@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ride_connect/presentation/auth/signup_page.dart';
 import 'package:ride_connect/presentation/driver/driver_home_page.dart';
 import 'package:ride_connect/presentation/rider/rider_home_page.dart';
 
@@ -43,6 +44,11 @@ class _LoginPageState extends State<LoginPage> {
             },
             child: Text('Login'),
           ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
+            },
+            child: Text("Don't have an account? Sign up"),)
         ],
       ),
     );

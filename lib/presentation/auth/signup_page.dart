@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/ride/service/auth_service.dart';
 import 'login_page.dart';
 
 class SignupPage extends StatefulWidget {
@@ -16,6 +17,9 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController passwordRegController = TextEditingController();
 
   String selectedRole = 'passenger';
+
+  final _authService = AuthService();
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ class _SignupPageState extends State<SignupPage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                signUp(
+                _authService.signUp(
                   emailRegController.text.trim(),
                   passwordRegController.text.trim(),
                   selectedRole,
@@ -66,39 +70,21 @@ class _SignupPageState extends State<SignupPage> {
               },
               child: const Text('Sign Up'),
             ),
+            const SizedBox(height: 20),
+
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );}, child: Text('Already have an account? Login'),
+            )
           ],
         ),
       ),
     );
   }
 
-  Future<void> signUp(
-      String email, String password, String role, BuildContext context) async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
 
-      String uid = userCredential.user!.uid;
 
-      // ✅ Save role to Firestore
-      await FirebaseFirestore.instance.collection('users').doc(uid).set({
-        'email': email,
-        'role': role,
-        'createdAt': FieldValue.serverTimestamp(),
-      });
-
-      print("User registered: $uid as $role");
-
-      // Navigate to login or dashboard
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-      );
-    } on FirebaseAuthException catch (e) {
-      print("Error: ${e.message}");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? 'Registration failed')),
-      );
-    }
-  }
 }

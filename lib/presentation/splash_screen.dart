@@ -21,7 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
 @override
   void initState() {
-  checkUserAndNavigate();
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    checkUserAndNavigate();
+  });
   super.initState();
   }
 
@@ -63,6 +65,12 @@ class _SplashScreenState extends State<SplashScreen> {
               MaterialPageRoute(builder: (_) => const SignupPage()),
             );
           }
+        } else {
+          // If role is unknown
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const SignupPage()),
+          );
         }
       } catch (e) {
         print("Error fetching role: $e");

@@ -2,14 +2,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PassengerService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
   Future<String> requestRide({
     required String passengerId,
     required String pickup,
     required String destination,
   }) async {
-    DocumentReference rideRef = await _firestore.collection('rideRequests').add({
+    DocumentReference rideRef = await _fireStore.collection('rideRequests').add({
       'passengerId': passengerId,
       'pickup': pickup,
       'destination': destination,
@@ -17,10 +17,10 @@ class PassengerService {
       'timestamp': FieldValue.serverTimestamp(),
     });
 
-    return rideRef.id; // Return the ride ID for real-time tracking
+    return rideRef.id;
   }
 
   Stream<DocumentSnapshot> trackRide(String rideId) {
-    return _firestore.collection('rideRequests').doc(rideId).snapshots();
+    return _fireStore.collection('rideRequests').doc(rideId).snapshots();
   }
 }
