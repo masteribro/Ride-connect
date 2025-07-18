@@ -41,11 +41,11 @@ class _DriverHomePageState extends State<DriverHomePage> {
               SizedBox(
                 height: 20,
               ),
-              Container(
+              Expanded(
                 child: StreamBuilder(
                   stream: service.getPendingRides(),
                   builder: (context, snapshot) {
-                    if (!snapshot.hasData) return const Text("No rides yet");
+                    if (!snapshot.hasData) return const Center(child: Text("No rides yet"));
                     final docs = snapshot.data!.docs;
                     return ListView.builder(
                       itemCount: docs.length,
@@ -64,7 +64,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                     );
                   },
                 ),
-              ),
+              )
             ],
           ),
         ),
